@@ -13,14 +13,15 @@ def createCompassList(array, position):
 
 # Work in Progress!
 def getMostSuitableMovingDirection(array, compass, movingDirection='none'):
-    print(compass)
-    mappedEntries = list([])
-
-    for direction, coordinates in compass:
-        mappedEntries.append([direction, coordinates, (array[coordinates])])
-
+    mappedEntries = list([direction, coordinates, array[coordinates]]
+        for direction, coordinates in compass)
+    
     print('mapped entries', mappedEntries)
-    available = list([[direction, coordinates, value] for direction, coordinates, value in mappedEntries if value  == ' ' ])
+
+    available = list([[direction, coordinates, value]
+        for direction, coordinates, value
+        in mappedEntries if value  == ' ' ])
+    
     if len(available) == 1:
         return available[0]
     elif 1 == 1:
