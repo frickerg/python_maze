@@ -27,4 +27,8 @@ c = ['*', '*', '*']
 print(maze)
 # [['*','*','*'],['*', ' ', '*'],['*', '*', '*']]
 
+# NumPy Multidimensional Array:
 https://stackoverflow.com/questions/51665905/adding-an-array-to-a-numpy-array
+
+# Clear Screen:
+https://www.geeksforgeeks.org/clear-screen-python/
