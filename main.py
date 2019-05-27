@@ -33,8 +33,12 @@ maze = np.array(setup)
 console.prettyprint(maze)
 resultA = utils.getPositionTupleOf(maze, 'A')
 resultB = utils.getPositionTupleOf(maze, 'B')
-print('Tuple of arrays returned A: ', resultA)
-print('Tuple of arrays returned B: ', resultB)
-print('Found A in array[{}][{}]'.format(resultA[0],resultA[1]))
-print('Found B in array[{}][{}]'.format(resultB[0],resultB[1]))
+print('Tuple of arrays returned A:', resultA)
+print('Tuple of arrays returned B:', resultB)
+print('Found A in [{}][{}]'.format(resultA[0],resultA[1]))
+print('Found B in [{}][{}]'.format(resultB[0],resultB[1]))
 print(maze[resultA[0]][resultA[1]], maze[resultB[0]][resultB[1]])
+
+compass = utils.createCompassList(maze, resultA)
+print('schema:', compass) # Nach diesem Schema arbeiten @khala1
+print('Move to:', utils.getMostSuitableMovingDirection(maze, compass)) # Work in Progress!
