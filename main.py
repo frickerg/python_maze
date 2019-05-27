@@ -26,7 +26,7 @@ with open(filename) as fp:
        setup.insert(cnt, [])
        chars = list(line.strip())
        for i in range(len(chars)):
-           mappedChar = utils.mapKeyToNumber(chars[i])
+           mappedChar = utils.mapCharacter(chars[i])
            setup[cnt].append(mappedChar)
 
 maze = np.array(setup)

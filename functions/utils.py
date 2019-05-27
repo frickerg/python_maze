@@ -1,28 +1,17 @@
 import numpy as np
+mapping = list([(0, '*'), (1, ' '), ('A', 2), ('B', 3)])
+
+# Toggles character to number and number to character
+def mapCharacter(argument):
+    for number, string in mapping:
+        if number == argument:
+            return string
+        elif string == argument:
+            return number
 
 def getPositionTupleOf(array, symbol):
     whereNp = np.where(array == symbol)
     return list(zip(whereNp[0], whereNp[1]))[0]
-
-def mapKeyToNumber(argument):
-    if argument == '*':
-        return 0
-    elif argument == ' ':
-        return 1
-    elif argument == 'A':
-        return 2
-    elif argument == 'B':
-        return 3
-
-def mapNumberToKey(argument):
-    if argument == 0:
-        return '*'
-    elif argument == 1:
-        return ' '
-    elif argument == 2:
-        return 'A'
-    elif argument == 3:
-        return 'B'
 
 def createCompassList(array, position):
     north = ('N', ((position[0] - 1), position[1]))
