@@ -4,11 +4,28 @@ def getPositionTupleOf(array, symbol):
     whereNp = np.where(array == symbol)
     return list(zip(whereNp[0], whereNp[1]))[0]
 
-def getMostSuitableDirection(array, currentDirection, position):
-    north = ('N', array[(position[0]-1)][position[1]])
-    east = ('E', array[position[0]][(position[1] + 1)])
-    south = ('S', array[(position[0]+1)][position[1]])
-    west = ('W', array[position[0]][(position[1] - 1)])
-    compass = list([north, east, south, west])
+def createCompassList(array, position):
+    north = ('N', ((position[0] - 1), position[1]))
+    east = ('E', (position[0], (position[1] + 1)))
+    south = ('S', ((position[0] + 1), position[1]))
+    west = ('W', (position[0], (position[1] - 1)))
+    return list([north, east, south, west])
+
+# Work in Progress!
+def getMostSuitableMovingDirection(array, compass, movingDirection='none'):
     print(compass)
-    
+    mappedEntries = list([])
+
+    for direction, coordinates in compass:
+        mappedEntries.append([direction, coordinates, (array[coordinates])])
+
+    print('mapped entries', mappedEntries)
+    available = list([[direction, coordinates, value] for direction, coordinates, value in mappedEntries if value  == ' ' ])
+    if len(available) == 1:
+        return available[0]
+    elif 1 == 1:
+        print('WIP')
+        #TODO: check if one of two directions is the direction we came from
+        pass
+    else:
+        pass
