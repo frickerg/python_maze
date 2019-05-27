@@ -8,3 +8,7 @@ def clear():
     # for mac and linux(here, os.name is 'posix')
     else:
         _ = system('clear')
+
+def prettyprint(array):
+    for x in array:
+        print(*x, sep="")
