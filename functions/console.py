@@ -12,5 +12,5 @@ def clear():
 
 def prettyprint(array):
     for line in array:
-        mappedLine = ''.join(utils.mapNumberToKey(char) for char in line)
-        print(mappedLine, sep="")
+        formattedLine = (utils.mapCharacter(char) for char in line)
+        print(*formattedLine, sep="")
