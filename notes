@@ -26,3 +26,5 @@ c = ['*', '*', '*']
 
 print(maze)
 # [['*','*','*'],['*', ' ', '*'],['*', '*', '*']]
+
+https://stackoverflow.com/questions/51665905/adding-an-array-to-a-numpy-array

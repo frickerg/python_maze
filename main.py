@@ -2,16 +2,26 @@ import numpy as np
 np.set_printoptions(threshold=np.inf)
 
 filename = './resources/maze-one.txt'
-maze = np.array([])
+setup = list()
 
 with open(filename) as fp:  
    for cnt, line in enumerate(fp):
        print("Line {}: {}".format(cnt, line.strip()))
-       chars = np.array(list(line.strip()))
-       maze = np.append(maze, chars)
+       chars = list(line.strip())
+       setup.insert(cnt, [])
+       for i in range(len(chars)):
+           setup[cnt].append(chars[i])
+
+maze = np.array(setup)
 
 print(maze)
+npwhere = np.where(maze == 'A')
+result = list(zip(npwhere[0], npwhere[1]))[0]
+print('Tuple of arrays returned : ', result)
+print('Found A in array[{}][{}]'.format(result[0],result[1]))
+print(maze[result[0]][result[1]])
 
+# numpy examples
 a = np.array([1, 2, 3])   # Create a rank 1 array
 print(a.shape)            # Prints "(3,)"
 print(a[0], a[1], a[2])   # Prints "1 2 3"
