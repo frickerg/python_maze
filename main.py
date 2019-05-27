@@ -26,13 +26,14 @@ with open(filename) as fp:
        setup.insert(cnt, [])
        chars = list(line.strip())
        for i in range(len(chars)):
-           setup[cnt].append(chars[i])
+           mappedChar = utils.mapKeyToNumber(chars[i])
+           setup[cnt].append(mappedChar)
 
 maze = np.array(setup)
 
 console.prettyprint(maze)
-resultA = utils.getPositionTupleOf(maze, 'A')
-resultB = utils.getPositionTupleOf(maze, 'B')
+resultA = utils.getPositionTupleOf(maze, 2)
+resultB = utils.getPositionTupleOf(maze, 3)
 print('Tuple of arrays returned A:', resultA)
 print('Tuple of arrays returned B:', resultB)
 print('Found A in [{}][{}]'.format(resultA[0],resultA[1]))

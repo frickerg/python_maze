@@ -1,5 +1,6 @@
 from os import system, name 
-  
+from functions import utils
+
 # define clear function 
 def clear():
     # for windows
@@ -10,5 +11,6 @@ def clear():
         _ = system('clear')
 
 def prettyprint(array):
-    for x in array:
-        print(*x, sep="")
+    for line in array:
+        mappedLine = ''.join(utils.mapNumberToKey(char) for char in line)
+        print(mappedLine, sep="")

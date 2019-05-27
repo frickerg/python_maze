@@ -4,8 +4,7 @@ def getPositionTupleOf(array, symbol):
     whereNp = np.where(array == symbol)
     return list(zip(whereNp[0], whereNp[1]))[0]
 
-
-def switch_probe(argument):
+def mapKeyToNumber(argument):
     if argument == '*':
         return 0
     elif argument == ' ':
@@ -15,12 +14,15 @@ def switch_probe(argument):
     elif argument == 'B':
         return 3
 
-
-#myList = ['A',' ','B','*']
-
-#for ele in myList:
-   # print (switch_probe(ele))
-    
+def mapNumberToKey(argument):
+    if argument == 0:
+        return '*'
+    elif argument == 1:
+        return ' '
+    elif argument == 2:
+        return 'A'
+    elif argument == 3:
+        return 'B'
 
 def createCompassList(array, position):
     north = ('N', ((position[0] - 1), position[1]))
@@ -38,7 +40,7 @@ def getMostSuitableMovingDirection(array, compass, movingDirection='none'):
 
     available = list([[direction, coordinates, value]
         for direction, coordinates, value
-        in mappedEntries if value  == ' ' ])
+        in mappedEntries if value  == 1])
     
     if len(available) == 1:
         return available[0]
