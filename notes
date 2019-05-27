@@ -19,7 +19,6 @@
 → gehe oben/unten
 
 # Multidimensional Array
-
 a = ['*','*','*']
 b = ['*', ' ', '*']
 c = ['*', '*', '*']
@@ -27,11 +26,27 @@ c = ['*', '*', '*']
 print(maze)
 # [['*','*','*'],['*', ' ', '*'],['*', '*', '*']]
 
-# NumPy Multidimensional Array:
+# Compass Class
+## Möglichkeit mit konstruktor
+def Compass(north, east, south, west)
+compass = new Compass('*', ' ', '*', '*')
+
+## Möglichkeit ohne konstruktor
+compass.setNorth('*')
+compass.setEast(' ')
+compass.setSouth('*')
+compass.setWest('*')
+
+## List von möglichen Richtungen zurückgeben
+compass.getAvailable() # ['E']
+
+
+# Resources
+## NumPy Multidimensional Array:
 https://stackoverflow.com/questions/51665905/adding-an-array-to-a-numpy-array
 
-# Clear Screen:
+## Clear Screen:
 https://www.geeksforgeeks.org/clear-screen-python/
 
-# Pretty Print:
+## Pretty Print:
 https://www.reddit.com/r/learnpython/comments/7e5k4o/how_do_i_pretty_print_a_2d_array_in_python/
