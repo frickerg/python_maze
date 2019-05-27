@@ -1,0 +1,28 @@
+? welche Seiten sind offen?
+→ 1-4
+
+? wenn 1 Seite offen
+→ move to offene seite [0]
+
+? wenn gleiche Seite offen
+→ gehe weiter in gleiche richtung
+    ? wenn richtung rechts und nicht offen
+    → gehehe unten
+    ? wenn richtung links und nicht offen
+    → gehe oben
+// immer rechts und unten oder links und oben
+
+? gehe unten/oben while
+→ wenn seite rechts/links offen, gehe rechts/links
+
+? wenn diese steps nicht möglich
+→ gehe oben/unten
+
+# Multidimensional Array
+
+a = ['*','*','*']
+b = ['*', ' ', '*']
+c = ['*', '*', '*']
+
+print(maze)
+# [['*','*','*'],['*', ' ', '*'],['*', '*', '*']]
