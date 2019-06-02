@@ -11,7 +11,7 @@ class Compass:
     def __init__(self):
         self.fields = {"N": self.north, "E": self.east, "S": self.south, "W": self.west}
 
-    def set(self, direction, coordinates, value):
+    def set(self, direction, coordinates):
         self.fields[direction] = coordinates
 
     def get(self, key):

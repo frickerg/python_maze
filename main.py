@@ -43,12 +43,7 @@ print("Found B in [{}][{}]".format(resultB[0], resultB[1]))
 print(maze[resultA[0]][resultA[1]], maze[resultB[0]][resultB[1]])
 
 coordinatesList = utils.create_coordinates_list(maze, resultA)
-print("schema:", coordinatesList)
 
 nextStep = utils.get_most_suitable_moving_direction(maze, coordinatesList)
-print("Move to:", nextStep)  # Work in Progress!
-
-compass = Compass()
-compass.set(nextStep["direction"], nextStep["coordinates"], nextStep["value"])
-
-print(compass.get("E"))
+print("Next step:", nextStep)  # Work in Progress!
+print("Move to:", coordinatesList.get(nextStep["direction"]))

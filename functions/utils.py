@@ -18,25 +18,26 @@ def get_position_tuple_of(array, symbol):
 
 
 def create_coordinates_list(array, position):
-    north = ("N", ((position[0] - 1), position[1]))
-    east = ("E", (position[0], (position[1] + 1)))
-    south = ("S", ((position[0] + 1), position[1]))
-    west = ("W", (position[0], (position[1] - 1)))
-    return list([north, east, south, west])
+    coord_north = ((position[0] - 1), position[1])
+    coord_east = (position[0], (position[1] + 1))
+    coord_south = ((position[0] + 1), position[1])
+    coord_west = (position[0], (position[1] - 1))
+
+    compass = Compass()
+    compass.set("N", coord_north)
+    compass.set("E", coord_east)
+    compass.set("S", coord_south)
+    compass.set("W", coord_west)
+    return compass
 
 
 # Work in Progress!
 def get_most_suitable_moving_direction(array, compass, movingDirection="none"):
-    mappedEntries = list(
-        [direction, coordinates, array[coordinates]]
-        for direction, coordinates in compass
-    )
-
     available = list(
         [
-            {"direction": direction, "coordinates": coordinates, "value": value}
-            for direction, coordinates, value in mappedEntries
-            if value == 1
+            {"direction": attr, "coordinates": value, "value": array[value]}
+            for attr, value in compass.fields.items()
+            if array[value] == 1
         ]
     )
 
