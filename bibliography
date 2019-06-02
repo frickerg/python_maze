@@ -1,0 +1,24 @@
+# Prerequisites:
+- https://pypi.org/project/numpy/
+- https://pypi.org/project/termcolor/
+
+# NumPy Multidimensional Array:
+https://stackoverflow.com/questions/51665905/adding-an-array-to-a-numpy-array
+
+# Clear Screen:
+https://www.geeksforgeeks.org/clear-screen-python/
+
+# Pretty Print:
+https://www.reddit.com/r/learnpython/comments/7e5k4o/how_do_i_pretty_print_a_2d_array_in_python/
+
+# Search in Tuple:
+https://stackoverflow.com/questions/2191699/find-an-element-in-a-list-of-tuples
+
+# Code formatter:
+https://github.com/python/black
+
+# Terminal colors:
+https://stackoverflow.com/questions/287871/how-to-print-colored-text-in-terminal-in-python
+
+# Iterating through object attributes:
+https://stackoverflow.com/questions/25150955/python-iterating-through-object-attributes

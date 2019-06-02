@@ -1,12 +1,16 @@
 import numpy as np
+from termcolor import colored
+
 from classes.Compass import Compass
 
-mapping = list([(0, "*"), (1, " "), ("A", 2), ("B", 3)])
+mapping = list([(0, "*"), (1, " "), (2, "A"), (3, "B")])
 
 # Toggles character to number and number to character
 def map_character(argument):
     for number, string in mapping:
         if number == argument:
+            if string == "A":
+                return colored(string, "red", "on_yellow", attrs=["bold"])
             return string
         elif string == argument:
             return number
