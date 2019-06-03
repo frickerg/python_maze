@@ -6,11 +6,13 @@ from classes.Compass import Compass
 mapping = list([(0, "*"), (1, " "), (2, "A"), (3, "B")])
 
 # Toggles character to number and number to character
-def map_character(argument):
+def map_character(argument, has_visited=False, override=False):
     for number, string in mapping:
         if number == argument:
-            if string == "A":
+            if override == True:
                 return colored(string, "red", "on_yellow", attrs=["bold"])
+            elif has_visited == True:
+                return "A"
             return string
         elif string == argument:
             return number
