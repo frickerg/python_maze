@@ -37,3 +37,8 @@ coordinatesList = utils.create_coordinates_list(maze, result_a)
 nextStep = utils.get_most_suitable_moving_direction(maze, coordinatesList)
 print("Next step:", nextStep)  # Work in Progress!
 print("Move to:", nextStep["coordinates"])
+
+maze[nextStep["coordinates"][0]][nextStep["coordinates"][1]] = maze[result_a[0]][result_a[1]]
+maze[result_a[0]][result_a[1]] = 1
+visited_coordinates.append(nextStep["coordinates"])
+console.prettyprint(maze, visited_coordinates)
