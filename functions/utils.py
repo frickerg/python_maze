@@ -4,7 +4,15 @@ from termcolor import colored
 from classes.Compass import Compass
 
 character_mapping = list([(0, "*"), (1, " "), (2, "A"), (3, "B")])
+
+# TODO: Opposed sides for next could be used for the right-hand side path and both paths could be compared in length
 direction_mapping = {
+    "N": {"next": "W", "opposite": "S"},
+    "E": {"next": "N", "opposite": "W"},
+    "S": {"next": "E", "opposite": "N"},
+    "W": {"next": "S", "opposite": "E"},
+}
+direction_mapping_right_handed = {
     "N": {"next": "E", "opposite": "S"},
     "E": {"next": "S", "opposite": "W"},
     "S": {"next": "W", "opposite": "N"},
@@ -54,6 +62,4 @@ def get_opposite_direction(direction):
 
 
 def get_next_direction(direction):
-    if direction != "None":
-        return direction_mapping[direction]["next"]
-    return direction
+    return direction_mapping[direction]["next"]
