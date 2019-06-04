@@ -23,17 +23,13 @@ def prettyprint(array, visited_coordinates):
 
 
 def bad_algorithm():
-    sleep(2)
-    print(colored("Your algorithm seems to be a dumb little donkey.", color="red"))
-    print(colored("To master the mysteries of kung-fu, you must become the python.", color="red"))
-    print(colored("Now get some coffee and do it better! 💥☕", color="yellow"))
+    print(colored("ERROR: Algorithm points back to starting position!", color="red"))
     exit()
 
 
 def success(number_of_steps):
     sleep(2)
+    print(colored("\nMade by Guillaume Fricker and Amir Khalife, 2019", "yellow"))
     print(colored("The light of past discovery draws me forward. Its shining light guides me to the glory of exploration.", color="green"))
-    print(colored("Batteries all charged up, snakebites not included!", color="green"))
-    print(colored("Finished the maze in {} steps".format(number_of_steps), color="yellow"))
-    print(colored("Made by Guillaume Fricker and Amir Khalife, 2019", color="yellow"))
+    print(colored("Finished the maze in {} steps\n".format(number_of_steps), "red", "on_yellow", attrs=["bold"]))
     exit()

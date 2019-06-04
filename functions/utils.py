@@ -19,6 +19,7 @@ def map_character(argument):
         elif string == argument:
             return number
 
+
 def print_character(argument, has_visited=False):
     if argument == 0:
         return colored(map_character(argument), "white", "on_white")
@@ -27,6 +28,7 @@ def print_character(argument, has_visited=False):
     elif argument == 2 or argument == 3:
         return colored(map_character(argument), "red", "on_yellow", attrs=["bold"])
     return map_character(argument)
+
 
 def get_position_tuple_of(array, symbol):
     whereNp = np.where(array == symbol)

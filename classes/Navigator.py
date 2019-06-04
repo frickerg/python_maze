@@ -1,17 +1,22 @@
 from functions import utils
 
+
 class Navigator:
     has_arrived = False
     visited_coordinates = set()
+    actual_path = list()
     destination = (0, 0)
     starting_point = (0, 0)
 
     def __init__(self, starting_point, destination):
+        self.visited_coordinates.clear()
+        self.actual_path.clear()
         self.add_coordinates(starting_point)
         self.starting_point = starting_point
         self.destination = destination
 
     def add_coordinates(self, coordinates):
+        self.actual_path.append(coordinates)
         self.visited_coordinates.add(coordinates)
 
     def move_to(self, maze, previous, coordinates):
@@ -19,6 +24,7 @@ class Navigator:
         maze[previous], maze[coordinates] = maze[coordinates], maze[previous]
         self.add_coordinates(coordinates)
         if coordinates == self.destination:
+            maze[previous] = 1
             self.has_arrived = True
 
     def contains(self, available, item):
