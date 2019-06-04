@@ -5,20 +5,7 @@ from functions import console
 from time import sleep
 
 from classes.Compass import Compass
-
-# numpy examples
-a = np.array([1, 2, 3])  # Create a rank 1 array
-print(a.shape)  # Prints "(3, )"
-print(a[0], a[1], a[2])  # Prints "1 2 3"
-a[0] = 5  # Change an element of the array
-print(a)  # Prints "[5, 2, 3]"
-
-b = np.array([[1, 2, 3], [4, 5, 6]])  # Create a rank 2 array
-print(b.shape)  # Prints "(2, 3)"
-print(b[0, 0], b[0, 1], b[1, 0])  # Prints "1 2 4"
-
-sleep(0.5)
-console.clear()
+from classes.Navigator import Navigator
 
 filename = "./resources/maze-one.txt"
 setup = list()
@@ -33,17 +20,30 @@ with open(filename) as fp:
 
 maze = np.array(setup)
 
-console.prettyprint(maze)
-resultA = utils.get_position_tuple_of(maze, 2)
-resultB = utils.get_position_tuple_of(maze, 3)
-print("Tuple of arrays returned A:", resultA)
-print("Tuple of arrays returned B:", resultB)
-print("Found A in [{}][{}]".format(resultA[0], resultA[1]))
-print("Found B in [{}][{}]".format(resultB[0], resultB[1]))
-print(maze[resultA[0]][resultA[1]], maze[resultB[0]][resultB[1]])
+result_a = utils.get_position_tuple_of(maze, 2)
+result_b = utils.get_position_tuple_of(maze, 3)
+navigator = Navigator(result_a, result_b)
 
-coordinatesList = utils.create_coordinates_list(maze, resultA)
+# TODO: ask if the user wants to move with left/right hand
+last_moving_direction = "N"
 
-nextStep = utils.get_most_suitable_moving_direction(maze, coordinatesList)
-print("Next step:", nextStep)  # Work in Progress!
-print("Move to:", coordinatesList.get(nextStep["direction"]))
+number_of_steps = 0
+while navigator.has_arrived != True:
+    sleep(1 / 30)
+    console.clear()
+
+    result_a = utils.get_position_tuple_of(maze, 2)
+    coordinates_list = utils.create_coordinates_list(maze, result_a)
+    next_step = navigator.get_most_suitable_moving_direction(maze, coordinates_list, moving_direction=last_moving_direction)
+
+    navigator.move_to(maze, result_a, next_step["coordinates"])
+    last_moving_direction = next_step["direction"]
+
+    console.prettyprint(maze, navigator.visited_coordinates)
+
+    number_of_steps += 1
+    if next_step["coordinates"] == navigator.starting_point:
+        console.bad_algorithm()
+
+# Algorithm successful!
+console.success(number_of_steps)

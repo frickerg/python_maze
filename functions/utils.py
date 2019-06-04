@@ -3,18 +3,30 @@ from termcolor import colored
 
 from classes.Compass import Compass
 
-mapping = list([(0, "*"), (1, " "), (2, "A"), (3, "B")])
+character_mapping = list([(0, "*"), (1, " "), (2, "A"), (3, "B")])
+direction_mapping = {
+    "N": {"next": "E", "opposite": "S"},
+    "E": {"next": "S", "opposite": "W"},
+    "S": {"next": "W", "opposite": "N"},
+    "W": {"next": "N", "opposite": "E"},
+}
 
 # Toggles character to number and number to character
 def map_character(argument):
-    for number, string in mapping:
+    for number, string in character_mapping:
         if number == argument:
-            if string == "A":
-                return colored(string, "red", "on_yellow", attrs=["bold"])
             return string
         elif string == argument:
             return number
 
+def print_character(argument, has_visited=False):
+    if argument == 0:
+        return colored(map_character(argument), "white", "on_white")
+    elif argument == 1 and has_visited:
+        return colored(map_character(argument), "green", "on_green")
+    elif argument == 2 or argument == 3:
+        return colored(map_character(argument), "red", "on_yellow", attrs=["bold"])
+    return map_character(argument)
 
 def get_position_tuple_of(array, symbol):
     whereNp = np.where(array == symbol)
@@ -35,21 +47,11 @@ def create_coordinates_list(array, position):
     return compass
 
 
-# Work in Progress!
-def get_most_suitable_moving_direction(array, compass, movingDirection="none"):
-    available = list(
-        [
-            {"direction": attr, "coordinates": value, "value": array[value]}
-            for attr, value in compass.fields.items()
-            if array[value] == 1
-        ]
-    )
+def get_opposite_direction(direction):
+    return direction_mapping[direction]["opposite"]
 
-    if len(available) == 1:
-        return available[0]
-    elif 1 == 1:
-        print("WIP")
-        # TODO: check if one of two directions is the direction we came from
-        pass
-    else:
-        pass
+
+def get_next_direction(direction):
+    if direction != "None":
+        return direction_mapping[direction]["next"]
+    return direction
