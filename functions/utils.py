@@ -4,11 +4,12 @@ from termcolor import colored
 from classes.Compass import Compass
 
 character_mapping = list([(0, "*"), (1, " "), (2, "A"), (3, "B")])
+
 direction_mapping = {
-    "N": {"next": "E", "opposite": "S"},
-    "E": {"next": "S", "opposite": "W"},
-    "S": {"next": "W", "opposite": "N"},
-    "W": {"next": "N", "opposite": "E"},
+    "N": {"next_left": "W", "next_right": "E", "opposite": "S"},
+    "E": {"next_left": "N", "next_right": "S", "opposite": "W"},
+    "S": {"next_left": "E", "next_right": "W", "opposite": "N"},
+    "W": {"next_left": "S", "next_right": "N", "opposite": "E"},
 }
 
 # Toggles character to number and number to character
@@ -53,7 +54,5 @@ def get_opposite_direction(direction):
     return direction_mapping[direction]["opposite"]
 
 
-def get_next_direction(direction):
-    if direction != "None":
-        return direction_mapping[direction]["next"]
-    return direction
+def get_next_direction(direction, hand):
+    return direction_mapping[direction]["next_" + hand]
