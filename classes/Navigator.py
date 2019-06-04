@@ -22,7 +22,6 @@ class Navigator:
         self.visited_coordinates.add(coordinates)
 
     def move_to(self, maze, previous, coordinates):
-        print(coordinates)
         maze[previous], maze[coordinates] = maze[coordinates], maze[previous]
         self.add_coordinates(coordinates)
         if coordinates == self.destination:
@@ -43,8 +42,8 @@ class Navigator:
                 if array[value] == 1 or array[value] == 3
             ]
         )
-            
-        next_direction = utils.get_next_direction(moving_direction, self.hand_side)        
+
+        next_direction = utils.get_next_direction(moving_direction, self.hand_side)
         # check if there is an outwards corner on hand side
         for element in available:
             if element["direction"] == next_direction:

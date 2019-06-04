@@ -31,5 +31,6 @@ def success(number_of_steps):
     sleep(2)
     print(colored("\nMade by Guillaume Fricker and Amir Khalife, 2019", "yellow"))
     print(colored("The light of past discovery draws me forward. Its shining light guides me to the glory of exploration.", color="green"))
-    print(colored("Finished the maze in {} steps\n".format(number_of_steps), "red", "on_yellow", attrs=["bold"]))
-    exit()
+    print(colored("Finished the maze in {} steps".format(number_of_steps), "red", "on_yellow", attrs=["bold"]))
+    # exit()
+    sleep(5)
