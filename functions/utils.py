@@ -12,17 +12,21 @@ direction_mapping = {
 }
 
 # Toggles character to number and number to character
-def map_character(argument, has_visited=False, override=False):
+def map_character(argument):
     for number, string in character_mapping:
         if number == argument:
-            if override == True:
-                return colored(string, "red", "on_yellow", attrs=["bold"])
-            elif has_visited == True:
-                return "A"
             return string
         elif string == argument:
             return number
 
+def print_character(argument, has_visited=False):
+    if argument == 0:
+        return colored(map_character(argument), "white", "on_white")
+    elif argument == 1 and has_visited:
+        return colored(map_character(argument), "green", "on_green")
+    elif argument == 2 or argument == 3:
+        return colored(map_character(argument), "red", "on_yellow", attrs=["bold"])
+    return map_character(argument)
 
 def get_position_tuple_of(array, symbol):
     whereNp = np.where(array == symbol)

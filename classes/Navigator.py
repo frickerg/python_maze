@@ -1,9 +1,8 @@
 from functions import utils
 
-
 class Navigator:
     has_arrived = False
-    visited_coordinates = []
+    visited_coordinates = set()
     destination = (0, 0)
     starting_point = (0, 0)
 
@@ -13,12 +12,11 @@ class Navigator:
         self.destination = destination
 
     def add_coordinates(self, coordinates):
-        self.visited_coordinates.append(coordinates)
+        self.visited_coordinates.add(coordinates)
 
-    def move_to(self, maze, coordinates):
+    def move_to(self, maze, previous, coordinates):
         print(coordinates)
-        last_move = self.visited_coordinates[len(self.visited_coordinates) - 1]
-        maze[last_move], maze[coordinates] = maze[coordinates], maze[last_move]
+        maze[previous], maze[coordinates] = maze[coordinates], maze[previous]
         self.add_coordinates(coordinates)
         if coordinates == self.destination:
             self.has_arrived = True

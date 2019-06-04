@@ -29,14 +29,14 @@ last_moving_direction = "N"
 
 number_of_steps = 0
 while navigator.has_arrived != True:
-    sleep(0.1)
+    sleep(1 / 30)
     console.clear()
 
     result_a = utils.get_position_tuple_of(maze, 2)
     coordinates_list = utils.create_coordinates_list(maze, result_a)
     next_step = navigator.get_most_suitable_moving_direction(maze, coordinates_list, moving_direction=last_moving_direction)
 
-    navigator.move_to(maze, next_step["coordinates"])
+    navigator.move_to(maze, result_a, next_step["coordinates"])
     last_moving_direction = next_step["direction"]
 
     console.prettyprint(maze, navigator.visited_coordinates)
