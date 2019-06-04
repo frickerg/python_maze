@@ -5,9 +5,7 @@ from functions import console
 from time import sleep
 
 from classes.Compass import Compass
-
-sleep(0.5)
-console.clear()
+from classes.Navigator import Navigator
 
 filename = "./resources/maze-one.txt"
 setup = list()
@@ -23,17 +21,29 @@ with open(filename) as fp:
 maze = np.array(setup)
 
 result_a = utils.get_position_tuple_of(maze, 2)
-visited_coordinates = [result_a]
-
-console.prettyprint(maze, visited_coordinates)
-
 result_b = utils.get_position_tuple_of(maze, 3)
-print("Tuple of A returned:", result_a)
-print("Tuple of B returned:", result_b)
-print(maze[result_a[0]][result_a[1]], maze[result_b[0]][result_b[1]])
+navigator = Navigator(result_a, result_b)
 
-coordinatesList = utils.create_coordinates_list(maze, result_a)
+# TODO: ask if the user wants to move with left/right hand
+last_moving_direction = "N"
 
-nextStep = utils.get_most_suitable_moving_direction(maze, coordinatesList)
-print("Next step:", nextStep)  # Work in Progress!
-print("Move to:", nextStep["coordinates"])
+number_of_steps = 0
+while navigator.has_arrived != True:
+    sleep(0.1)
+    console.clear()
+
+    result_a = utils.get_position_tuple_of(maze, 2)
+    coordinates_list = utils.create_coordinates_list(maze, result_a)
+    next_step = navigator.get_most_suitable_moving_direction(maze, coordinates_list, moving_direction=last_moving_direction)
+
+    navigator.move_to(maze, next_step["coordinates"])
+    last_moving_direction = next_step["direction"]
+
+    console.prettyprint(maze, navigator.visited_coordinates)
+
+    number_of_steps += 1
+    if next_step["coordinates"] == navigator.starting_point:
+        console.bad_algorithm()
+
+# Algorithm successful!
+console.success(number_of_steps)
