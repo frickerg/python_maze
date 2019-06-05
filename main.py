@@ -1,3 +1,14 @@
+import subprocess
+import sys
+
+
+def install_pip(package):
+    subprocess.call([sys.executable, "-m", "pip", "install", package])
+
+
+install_pip("numpy")
+install_pip("termcolor")
+
 import numpy as np
 
 from functions import utils
