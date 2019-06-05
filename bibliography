@@ -28,3 +28,7 @@ https://stackoverflow.com/questions/9542738/python-find-in-list
 
 # Find all occurences in list by index:
 https://stackoverflow.com/questions/6294179/how-to-find-all-occurrences-of-an-element-in-a-list/6294744
+
+# Merging algorithm groupby:
+https://stackoverflow.com/questions/28050350/split-list-of-strings-into-list-of-sublists-based-on-a-string
+https://docs.python.org/2/library/itertools.html#itertools.groupby
