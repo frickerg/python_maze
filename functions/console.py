@@ -23,17 +23,22 @@ def prettyprint(array, visited_coordinates):
 
 
 def bad_algorithm():
-    sleep(2)
-    print(colored("Your algorithm seems to be a dumb little donkey.", color="red"))
-    print(colored("To master the mysteries of kung-fu, you must become the python.", color="red"))
-    print(colored("Now get some coffee and do it better! 💥☕", color="yellow"))
+    print(colored("ERROR: Algorithm points back to starting position!", color="red"))
     exit()
 
 
-def success(number_of_steps):
+def success(merged_path_len, left_hand_len, right_hand_len):
+    print()
+    sleep(1)
+    print(colored("left hand algorithm:  {} steps".format(left_hand_len), "red", attrs=["bold"]))
+    print(colored("right hand algorithm: {} steps".format(right_hand_len), "red", attrs=["bold"]))
+    print(colored("merged algorithm:     {} steps".format(merged_path_len), "red", attrs=["bold"]))
+    print()
+    print(colored("Finished the maze in: {} steps".format(merged_path_len), "red", "on_yellow", attrs=["bold"]))
     sleep(2)
-    print(colored("The light of past discovery draws me forward. Its shining light guides me to the glory of exploration.", color="green"))
-    print(colored("Batteries all charged up, snakebites not included!", color="green"))
-    print(colored("Finished the maze in {} steps".format(number_of_steps), color="yellow"))
-    print(colored("Made by Guillaume Fricker and Amir Khalife, 2019", color="yellow"))
+    print()
+    print(colored("Made by Guillaume Fricker and Amir Khalife, 2019", "yellow"))
+    print(colored("The light of past discovery draws me forward.", color="green"))
+    print(colored("Its shining light guides me to the glory of exploration.", color="green"))
+    print()
     exit()
