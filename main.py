@@ -18,7 +18,12 @@ from time import sleep
 
 from classes.Navigator import Navigator
 
-filename = "./resources/maze-many.txt"
+import os
+
+path_name = os.path.dirname(os.path.abspath(__file__))
+resources_path = os.path.join(path_name, "resources")
+filename = os.path.join(resources_path, "maze-many.txt")
+
 setup = list()
 
 with open(filename) as fp:
