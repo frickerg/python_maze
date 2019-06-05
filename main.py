@@ -1,4 +1,5 @@
 import numpy as np
+import itertools
 
 from functions import utils
 from functions import console
@@ -78,3 +79,70 @@ printing_looper(clean_left)
 actual_right = looper("right")
 clean_right = remove_loose_ends(actual_right)
 printing_looper(clean_right)
+merged_path = list()
+
+print(None in clean_left)
+for left, right in itertools.zip_longest(clean_left, clean_right):
+    if left == right:
+        merged_path.append(left)
+    else:
+        try:
+            iter_start_left = clean_left.index(left)
+            iter_start_right = clean_right.index(right)
+            iter_end_left = 0
+            iter_end_right = 0
+            steps_left = 0
+            steps_right = 0
+        except ValueError:
+            pass
+        try:
+            if left in clean_right:
+                iter_end_left = clean_right.index(left)
+                print("left", iter_start_left, iter_end_left, "->", iter_start_right, iter_end_right)
+                print("steps", steps_left)
+                steps_left += 1
+            else:
+                pass
+        except ValueError:
+            pass
+        try:
+            if right in clean_left:
+                iter_end_right = clean_left.index(right)
+                print("right", iter_start_right, iter_end_right, "->", iter_start_left, iter_end_left)
+                print("steps", steps_right)
+                steps_right += 1
+            else:
+                pass
+        except ValueError:
+            pass
+"""
+for i in range(len(clean_right)):
+    if clean_left[i] == clean_right[i]:
+        merged_path.append(clean_left)
+    else:
+        steps_left = 0
+        steps_right = 0
+        found_left = False
+        found_right = False
+
+        while found_left == False:
+            try:
+                print(clean_left.index(clean_right[i + steps_right]))
+                print('right',clean_right[i + steps_right])
+                found_left = True
+            except ValueError:
+                pass
+            steps_left += 1
+            steps_right += 1
+        while found_right == False:
+            try:
+                clean_right.index(clean_left[i + steps_left])
+                print('left',clean_left[i + steps_left])
+                found_right = True
+            except ValueError:
+                pass
+            steps_left += 1
+            steps_right += 1
+        print(steps_left, steps_right)
+print(merged_path)
+"""
