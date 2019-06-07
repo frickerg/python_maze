@@ -13,12 +13,17 @@ def clear():
         _ = system("clear")
 
 
+# print the maze pretty
 def prettyprint(array, visited_coordinates):
     for i in range(len(array)):
+        # create empty string which will be appended as one line
         formatted_line = ""
         for k in range(len(array[i])):
+            # check if the coordinates have been visited yet
             has_visited = (i, k) in visited_coordinates
+            # append character to current line
             formatted_line += utils.print_character(array[i][k], has_visited)
+        # print the formatted_line with empty seperator of chars
         print(*formatted_line, sep="")
 
 

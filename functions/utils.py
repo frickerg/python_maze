@@ -21,6 +21,7 @@ def map_character(argument):
             return number
 
 
+# prettyprint behavior
 def print_character(argument, has_visited=False):
     if argument == 0:
         return colored(map_character(argument), "white", "on_white")
@@ -31,11 +32,13 @@ def print_character(argument, has_visited=False):
     return map_character(argument)
 
 
+# returns the first position of a symbol (can be used to find A or B efficiently)
 def get_position_tuple_of(array, symbol):
     whereNp = np.where(array == symbol)
     return list(zip(whereNp[0], whereNp[1]))[0]
 
 
+# retuns a Compass instance which contains all neighboring coordinates of a given position
 def create_coordinates_list(array, position):
     coord_north = ((position[0] - 1), position[1])
     coord_east = (position[0], (position[1] + 1))
