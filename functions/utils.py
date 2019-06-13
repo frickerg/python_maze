@@ -3,7 +3,9 @@ from termcolor import colored
 
 from classes.Compass import Compass
 
+#at the follownig we assign each direction with a symbon 
 character_mapping = list([(0, "*"), (1, " "), (2, "A"), (3, "B")])
+
 
 direction_mapping = {
     "N": {"next_left": "W", "next_right": "E", "opposite": "S"},

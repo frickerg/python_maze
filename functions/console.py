@@ -26,12 +26,12 @@ def prettyprint(array, visited_coordinates):
         # print the formatted_line with empty seperator of chars
         print(*formatted_line, sep="")
 
-
+#In case of that something goes wrong the operation will stoped and we get the an Error Message
 def bad_algorithm():
     print(colored("ERROR: Algorithm points back to starting position!", color="red"))
     exit()
 
-
+#When the start Point A reach successfully B the success methode will describe all steps A did plus some information about the development.  
 def success(merged_path_len, left_hand_len, right_hand_len):
     print()
     sleep(1)
